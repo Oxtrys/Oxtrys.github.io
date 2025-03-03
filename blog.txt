@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How To Monitor Server Performance On Linux VPS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .checklist {
+            list-style-type: none;
+        }
+        .checklist li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>How To Monitor Server Performance On Linux VPS with Top and HTOP?</h1>
+<p>Monitoring the performance of the Linux VPS is probably the best practice that you can do for your server. If you do not do so, this can be compared to driving your car while the speedometer is not working; you will not know when things went wrong until it is too late.</p>
+
+<p>So, how do you mitigate all of these possible server problems? The answer is two powerful command line tools, <strong>Top</strong> and <strong>HTOP</strong>. Here are some important tools to check CPU, memory, and process utilization in real time so you can catch any issues as soon as possible before they become bigger pain points. Let’s find all you need to know about Top and HTOP used for monitoring server performance on a Linux VPS.</p>
+
+<h2>What are Top and Htop?</h2>
+<h3>Top: The Classic System Monitoring Utility</h3>
+<p>Top is a built-in command with Linux that allows you to monitor your server in real time. This lists CPU usage and memory usage along with running processes and system load, aiding you to identify resource-heavy applications.</p>
+<p>Top is an incredibly powerful tool, but it has its challenges:</p>
+<ul class="checklist">
+    <li>✅ Delivers critical metrics for performance</li>
+    <li>❌ No Attractive User Interface</li>
+    <li>❌ Cannot sort and filter in different ways</li>
+</ul>
+
+<h3>HTOP: The Modern Alternative to Top</h3>
+<p>HTOP is an interactive and more user-friendly version of Top. It gives you a vibrant and visually-rich interface along with some more features:</p>
+<ul class="checklist">
+    <li>✔️ You navigate your Keyboard through the process.</li>
+    <li>✔️ Customizable sorting options</li>
+    <li>✔️ Improved memory and CPU usage breakdowns</li>
+</ul>
+<p>On most Linux distributions, Top is pre-installed and running by default, while HTOP requires a manual installation, the nux functionality gives an additional benefit to the user, which compensates for the effort.</p>
+
+<h2>Why is Monitoring Linux VPS Performance Crucial?</h2>
+<p>The Linux VPS is the core component of the asset, whether it is a website, an application, or even a service that is needed by the company. It can easily result in speed problems, interruptions, and even expensive downtimes, to negate the performance issues that can be harmful in the long run. Here is a closer look at why monitoring your VPS performance is very important.</p>
+
+<h3>1. Keep Away From Slow Application Response</h3>
+<p>The high CPU, memory, or disk usage of your server will affect application performance. Websites become slow to load, and APIs increase response times and annoy users. Tracking these key metrics helps you detect bottlenecks early and take measures before they impact your end users.</p>
+
+<h3>2. Prevent Service Degradation</h3>
+<p>When a VPS is seizing up, it will not just slow down but also begin to drop requests. Excessive load can result in timeouts, database connection failures, and variation in service quality. The right set of alerts means you will be alerted if the performance begins to drop, so you do not face an entire service failure.</p>
+
+<h3>3. Minimize Unexpected Downtime</h3>
+<p>Performance problems can spiral out of control if left unchecked. If the disk is full or memory consumption is excessive, the critical services can crash and force unplanned downtime. And the loss of time is money, of course, but also loss of reputation. These risks can be avoided through the use of monitoring tools that notify you when resource usage approaches high usage levels.</p>
+
+<h3>4. Optimize Resource Usage</h3>
+<p>Not every performance issue is related to resources; other times inefficient processes make a mockery of what you have.
+So, a misconfigured application or memory leak can actually consume CPU cycles and RAM, starving it from the ability to efficiently deliver other workloads. By tracking the performance of your applications, you can spot any processes consuming excessive resources and entirely stop them so that your VPS can function at its best.</p>
+
+<h3>5. Cut Costs and Scale Up Wisely</h3>
+<p>If you find this really high on your VPS often, you may consider upgrading your plan. Without monitoring, though, you might be scaling your resources more than you really need. Monitoring performance helps identify if it needs optimization or expansion, saving time and budget in the future.</p>
+
+<h2>Steps to Monitor Server Performance</h2>
+<h3>Step 1: Connect to Your VPS</h3>
+<p>To monitor your server, you must first connect to your Linux VPS via SSH. Open a terminal and run:</p>
+<pre><code>ssh your-user@your-server-ip</code></pre>
+<p>Replace <code>your-user</code> and <code>your-server-ip</code> with your login details.</p>
+
+<h3>Step 2: Run the Top Command</h3>
+<p>Top is pre-installed in most of the Linux distributions. To start monitoring, just type the following command:</p>
+<pre><code>top</code></pre>
+<p>This will create an interactive dashboard that shows the CPU, memory, and system load, as well as running processes, in real-time. To exit Top, press <code>q</code>.</p>
+
+<h3>Step 3: Set Up and Release HTOP</h3>
+<p>HTOP is an alternative to Top but more user-friendly and not available by default. Install it using:</p>
+<ul>
+    <li>For Debian/Ubuntu:
+        <pre><code>sudo apt update && sudo apt install htop</code></pre>
+    </li>
+    <li>For CentOS/RHEL:
+        <pre><code>sudo yum install htop</code></pre>
+    </li>
+    <li>For Arch Linux:
+        <pre><code>sudo pacman -S htop</code></pre>
+    </li>
+</ul>
+
+<h3>Step 4: Use Top to Analyze System Performance</h3>
+<p>It shows detailed system metrics at a glance with the Top command:</p>
+<ul>
+    <li><strong>CPU Usage:</strong> This percent shows how much of the CPU power is being used.</li>
+    <li><strong>Memory (RAM):</strong> Displays total, used, and remaining memory.</li>
+    <li><strong>Load Average:</strong> Measures system load over a period of time.</li>
+    <li><strong>Running processes (PSTree):</strong> Shows the running processes, their associated PIDs, and resource usage.</li>
+</ul>
+<p>Sorting & Filtering in Top:</p>
+<p>To sort processes, use:</p>
+<ul>
+    <li><code>Shift + P</code> (sort by CPU usage)</li>
+    <li><code>M</code> to sort by memory usage</li>
+</ul>
+
+<h3>Step 5: Using HTOP to Monitor and Manage Processes</h3>
+<p>HTOP has a more user-friendly interface with:</p>
+<ul>
+    <li>Memory and CPU colors usage to track more easily</li>
+    <li>Columns that can be sorted so you can quickly look up processes</li>
+    <li>Process Shortcuts Keyboard Shortcuts to make your process selection easier.</li>
+</ul>
+<p>HTOP Shortcuts:</p>
+<ul>
+    <li><code>F5</code> — Tree view (shows process hierarchy)</li>
+    <li><code>F6</code> — Sort by CPU, Memory or whatever</li>
+    <li><code>F9</code> - Kill a process</li>
+</ul>
+
+<h3>Step 6: Kill Processes That Are Utilizing Excessive Resources</h3>
+<p>If the process consumes a lot of CPU or uses a lot of RAM, you can terminate it:</p>
+<ul>
+    <li><strong>Using Top:</strong> Find the PID (Process ID) of the failed process.
+        <pre><code>kill -9 PID</code></pre>
+    </li>
+    <li><strong>Using HTOP:</strong>
+        <ul>
+            <li>Arrow keys to choose the process</li>
+            <li>Press <code>F9</code> and select <code>SIGKILL</code> and hit Enter</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>Step 7: Monitoring VPS Performance Continuously</h3>
+<p>To automate its monitoring, you can type:</p>
+<pre><code>watch -n 5 top</code></pre>
+<p>This gives you a refreshed overview of your system without manually providing it.</p>
+
+<h2>How Top and HTOP Can Monitor Server Performance on Linux VPS?</h2>
+<h3>Tracking CPU and Memory Usage Instantly</h3>
+<p>Top and HTOP—both of these tools give you an overview of your VPS consumption, showing you how much CPU and RAM you are using, which helps to identify spikes in consumption.</p>
+
+<h3>Locating Processes that Use Lots of Resources</h3>
+<p>You need these tools to quickly see which process is consuming too much CPU or memory and get to know and act on them.</p>
+
+<h3>Handling Processes Synchronously</h3>
+<p>HTOP makes server management smoother due to its easy navigation, filtering, and killing processes, compared to Top.</p>
+
+<h3>System Load and Uptime Metrics</h3>
+<p>Load averages are shown by Top and HTOP to show whether your VPS is overloaded or not.</p>
+
+<h3>Making Sure Everything Works on the Server</h3>
+<p>Consistent checking and control of resource consumption allows for avoiding crashes or over-consumption of resources and ensuring uptime and efficiency.</p>
+
+<h2>Conclusion</h2>
+<p>Monitoring a Linux VPS is more than just a good practice; it's a must. Using Top and HTOP commands helps you do this by giving you a real-time view of your system performance, allowing you to identify and resolve the issue before it negatively impacts your website or application.</p>
+<p>Top gives you a very basic summary of CPU and memory utilization, whereas HTOP is a more user/interactive-friendly way of managing server processes. If you are looking to keep your VPS running smoothly, monitor your server with Top and HTOP like a pro!</p>
+
+</body>
+</html>
